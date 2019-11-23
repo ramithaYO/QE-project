@@ -1,8 +1,7 @@
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
-    name = 'users'
-    
+class InventoryConfig(AppConfig):
+    name = 'inventory'
     def ready(self):
         import users.signals

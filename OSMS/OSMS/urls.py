@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path,include
 from users import views as user_views
+from inventory import views as inventory_views
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('inventory/', include('inventory.urls')),
     path('blog/', include('blog.urls')),
     path('register/', user_views.register, name='register'),
      #custom route
@@ -31,3 +34,8 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "OSMS Admin"
+admin.site.site_title = "OSMS Admin Portal"
+admin.site.index_title = "Welcome to OSMS Researcher Portal"

@@ -1,0 +1,57 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <!-- <article class="media content-section">
+ 
+    <div class="media-body">
+      <div class="article-metadata">
+          <img class="rounded-circle article-img" src="{{ object.profile.image.url }}">
+        <a class="mr-2" href="#">{{ object.name }}</a>
+       
+ 
+      <h1>
+        hello there how are u
+      </h1>
+      <p class="article-content">{{ object.description }}</p>
+    </div>
+  </article> -->
+  <div class="card" style="width: 18rem;">
+    <img src="{{ object.profile.image.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ object.name }}</h5>
+      <p class="card-text">{{ object.description }}</p>
+    </div>
+    <!-- <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul> -->
+   
+  
+
+
+    <div>
+        {% if user.is_superuser %}
+      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'item-update' object.id %}">Update</a>
+      <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'item-delete' object.id %}">Delete</a>
+      {% endif %}
+    </div>
+    <div class="card-body">
+        {% if not user.is_superuser %}
+              {% if user.is_authenticated %} 
+                  {%if object.numberofitems != 0 %}
+                  <a href="#" class="card-link">Add to Cart</a>
+                  {%else%}
+                  <p class="card-text"><small class="text-muted">Outof stocks</small></p>
+                  {% endif %} 
+            
+
+              {%else%}
+              
+              <a href="#" class="card-link">Loging to add to cart</a>
+
+              {% endif %}
+        {% endif %}
+     
+    </div>
+  </div>
+{% endblock content %}

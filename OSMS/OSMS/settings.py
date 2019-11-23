@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'inventory.apps.InventoryConfig',
     'crispy_forms',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -129,4 +130,4 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 
 
 LOGIN_REDIRECT_URL = 'blog-home'
-LOGIN_URL ='login'
+LOGIN_URL ='login' 

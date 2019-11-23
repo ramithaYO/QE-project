@@ -1,0 +1,21 @@
+{%extends "blog/base.html"%}
+
+{%block content%}
+       {%for item in items %}
+            <article class="media content-section">
+                    <div class="media-body">
+                    <div class="article-metadata">
+                       
+                        <a class="mr-2"  href="{% url 'item-detail' item.id %}">{{ item.name }}</a>
+                    
+                    </div>
+                    <p class="article-content">{{ item.productdetails }}</p>
+                    <span>available items</span>
+                    <small class="text-muted">{{ item.numberofitems }}</small>
+                  
+                    </div>
+                </article>
+       {%endfor%}
+{%endblock content%}
+
+
